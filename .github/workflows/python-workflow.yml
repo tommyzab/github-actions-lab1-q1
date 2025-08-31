@@ -1,17 +1,23 @@
 name: CI
 
 on:
-  push:  
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+    # 1) Checkout repo
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2) Setup Python
     - name: Set up Python 3.11
       uses: actions/setup-python@v5
       with:
         python-version: 3.11
 
+    # 3) Install dependencies
     - name: Install dependencies
       run: pip install -r requirements.txt
